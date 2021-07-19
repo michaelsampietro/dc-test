@@ -1,2 +1,6 @@
-node_module
+.DS_*
+*.log
+logs
+
+node_modules
 yarn.lock
