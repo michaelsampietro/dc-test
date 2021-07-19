@@ -1,26 +1,25 @@
 import React from 'react';
-import logo from './logo.png';
-import './App.css';
+import { Card, Layout } from 'antd';
+import AppHeader from './components/AppHeader';
+import AppFooter from './components/AppFooter';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="Delivery Center" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload. doideir
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+import "antd/dist/antd.css";
+import styles from './App.module.css';
+
+const App: React.FC = () => (
+  <Layout>
+    <header>
+      <AppHeader />
+    </header>
+    <section className={styles.content} >
+      <Card>
+        Content
+      </Card>
+    </section>
+    <footer>
+      <AppFooter />
+    </footer>
+  </Layout>
+);
 
 export default App;
