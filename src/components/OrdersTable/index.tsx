@@ -1,12 +1,15 @@
-import { gql, useQuery } from '@apollo/client';
-import React, { useEffect } from 'react';
-import { client } from '../../config/apollo';
+import { useQuery } from '@apollo/client';
+import React from 'react';
+import { Order } from '../../types/Order';
 import { GET_ORDERS_SUMMARY } from './query';
-import { Orders } from './types';
+
+type DataType = {
+  orders: Order[];
+}
 
 const OrdersTable: React.FC = () => {
 
-  const { loading, error, data } = useQuery<Orders>(GET_ORDERS_SUMMARY);
+  const { loading, error, data } = useQuery<DataType>(GET_ORDERS_SUMMARY);
 
   if (loading) return <p>Loading...</p>
 
@@ -15,7 +18,7 @@ const OrdersTable: React.FC = () => {
       {data!.orders.map(order => {
         return (
           <>
-            <p>{order._id}</p>
+            <p>{order.store}</p>
           </>
         );
       })}
