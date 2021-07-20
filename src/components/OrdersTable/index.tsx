@@ -1,5 +1,5 @@
 import { useQuery } from "@apollo/client";
-import { Table } from "antd";
+import { notification, Table } from "antd";
 import React, { useEffect, useState } from "react";
 import { Order } from "../../types/Order";
 import { GET_ORDERS } from "./query";
@@ -27,6 +27,14 @@ const OrdersTable: React.FC = () => {
     setOrders(formatOrdersForTable(data?.orders ?? []));
   }, [data]);
 
+  useEffect(() => {
+    if (error) {
+      notification.error({
+        message: error.message
+      })
+    }
+  }, [error])
+
   return (
     <Table
       style={{
@@ -41,6 +49,9 @@ const OrdersTable: React.FC = () => {
         return {
           onClick: () => alert(JSON.stringify(record)),
         };
+      }}
+      pagination={{
+        showSizeChanger: true
       }}
     />
   );
