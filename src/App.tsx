@@ -13,6 +13,8 @@ import {
 
 import "antd/dist/antd.css";
 import styles from './App.module.css';
+import { ApolloProvider } from '@apollo/client';
+import { client } from './config/apollo';
 
 
 const App: React.FC = () => (
@@ -21,11 +23,14 @@ const App: React.FC = () => (
       <AppHeader />
     </header>
     <section className={styles.content}>
-      <Router>
-        <Switch>
-          <Route path="/" component={OrdersList} />
-        </Switch>
-      </Router>
+      <ApolloProvider client={client}>
+        <Router>
+          <Switch>
+            <Route path="/" component={OrdersList} />
+          </Switch>
+        </Router>
+
+      </ApolloProvider>
     </section>
     <footer>
       <AppFooter />
