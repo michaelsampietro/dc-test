@@ -1,4 +1,5 @@
 export type Payment = {
-  method?: string,
+  _id: string;
+  method: string,
   amount: number,
 }
