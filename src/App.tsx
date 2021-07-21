@@ -9,6 +9,7 @@ import "antd/dist/antd.css";
 import styles from "./App.module.css";
 import { ApolloProvider } from "@apollo/client";
 import { client } from "./config/apollo";
+import OrderDetail from "./pages/OrderDetail";
 
 const App: React.FC = () => (
   <Layout>
@@ -18,7 +19,8 @@ const App: React.FC = () => (
     <section className={styles.content}>
       <ApolloProvider client={client}>
         <Router>
-          <Switch>
+          <Switch >
+            <Route path="/pedido/:id" component={OrderDetail} />
             <Route path="/" component={OrdersList} />
           </Switch>
         </Router>

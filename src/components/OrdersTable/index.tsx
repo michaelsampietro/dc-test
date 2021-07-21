@@ -1,6 +1,7 @@
 import { useQuery } from "@apollo/client";
 import { notification, Table } from "antd";
 import React, { useEffect, useState } from "react";
+import { useHistory } from "react-router-dom";
 import { Order } from "../../types/Order";
 import { GET_ORDERS } from "./query";
 import styles from "./styles.module.css";
@@ -22,6 +23,7 @@ export type OrdersTableDataType = {
 const OrdersTable: React.FC = () => {
   const { loading, error, data } = useQuery<DataType>(GET_ORDERS);
   const [orders, setOrders] = useState<OrdersTableDataType[]>([]);
+  const history = useHistory();
 
   useEffect(() => {
     setOrders(formatOrdersForTable(data?.orders ?? []));
@@ -35,6 +37,10 @@ const OrdersTable: React.FC = () => {
     }
   }, [error])
 
+  const viewOrder = (orderId: string) => {
+    history.push(`/pedido/${orderId}`);
+  }
+
   return (
     <Table
       style={{
@@ -47,7 +53,7 @@ const OrdersTable: React.FC = () => {
       rowClassName={styles.row}
       onRow={(record) => {
         return {
-          onClick: () => alert(JSON.stringify(record)),
+          onClick: () => viewOrder(record.id),
         };
       }}
       pagination={{
