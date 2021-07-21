@@ -1,15 +1,16 @@
+import { Order } from "../types/Order";
 import { Payment } from "../types/Payment";
+import { calculateOrderTotalValue } from "./calculateOrderTotalValue";
 
 /**
  * This method calculates how much is left for the customer to pay the order
- * @param totalValue total value of the order
- * @param payments array with the payment methods used by the customer
+ * @param order order to be calculated
  * @returns the pending value
  */
- export const calculatePendingValue = (totalValue: number, payments: Payment[]): number => {
-  const paidValue = payments.reduce((value, paymentMethod) => {
+ export const calculateOrderPendingValue = (order: Order): number => {
+  const paidValue = order.payments.reduce((value, paymentMethod) => {
     return value + paymentMethod.amount
   }, 0);
 
-  return totalValue - paidValue;
+  return calculateOrderTotalValue(order) - paidValue;
 }

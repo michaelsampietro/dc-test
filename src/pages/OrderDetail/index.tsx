@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import { setSelectedOrder } from "../../app/features/order";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
 import PageTitle from "../../components/PageTitle";
+import OrderDataCard from "./components/OrderDataCard";
 
 const OrderDetail: React.FC = () => {
   const { id } = useParams<any>();
@@ -21,6 +22,7 @@ const OrderDetail: React.FC = () => {
   return (
     <>
       <PageTitle title={`Pedido ${id}`} />
+      <OrderDataCard />
     </>
   );
 };

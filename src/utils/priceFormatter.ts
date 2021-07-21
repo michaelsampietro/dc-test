@@ -3,4 +3,4 @@
  * @param value value to be formatted (in cents)
  * @returns the price formatted
  */
-export const priceFormatter = (value: number) => `R$ ${value / 100}`;
+export const formatPrice = (value: number) => `R$ ${value / 100}`;

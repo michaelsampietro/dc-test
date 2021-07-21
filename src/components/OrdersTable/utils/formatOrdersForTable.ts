@@ -1,8 +1,8 @@
 import { OrdersTableDataType } from "..";
 import { Order } from "../../../types/Order";
 import { calculateOrderTotalValue } from "../../../utils/calculateOrderTotalValue";
-import { calculatePendingValue } from "../../../utils/calculatePendingValue";
-import { priceFormatter } from "../../../utils/priceFormatter";
+import { calculateOrderPendingValue } from "../../../utils/calculatePendingValue";
+import { formatPrice } from "../../../utils/priceFormatter";
 
 /**
  * This method formats the orders that comes from the backend to be used in the table
@@ -17,8 +17,8 @@ import { priceFormatter } from "../../../utils/priceFormatter";
       id: order._id,
       customer: order.customer.name,
       store: order.store,
-      value: priceFormatter(calculateOrderTotalValue(order.amount, order.deliveryFee)),
-      pendingValue: priceFormatter(calculatePendingValue(order.amount + order.deliveryFee, order.payments))
+      value: formatPrice(calculateOrderTotalValue(order)),
+      pendingValue: formatPrice(calculateOrderPendingValue(order))
     })
   });
 
