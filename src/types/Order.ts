@@ -1,11 +1,15 @@
+import { Address } from "cluster";
 import { Customer } from "./Customer";
+import { Item } from "./Item";
 import { Payment } from "./Payment";
 
 export type Order = {
   _id: string,
-  customer: Customer,
-  store: string,
   amount: number,
   deliveryFee: number,
-  payments: Payment[]
+  store: string,
+  customer: Customer,
+  address: Address,
+  items: Item[]
+  payments: Payment[],
 }
