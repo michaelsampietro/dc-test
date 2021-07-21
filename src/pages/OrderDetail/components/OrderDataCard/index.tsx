@@ -5,7 +5,6 @@ import GroupData from "../../../../components/GroupData";
 import { calculateOrderTotalValue } from "../../../../utils/calculateOrderTotalValue";
 import { calculateOrderPendingValue } from "../../../../utils/calculatePendingValue";
 import { formatPrice } from "../../../../utils/priceFormatter";
-import styles from "./styles.module.css";
 
 const OrderDataCard: React.FC = () => {
   const selectedOrder = useAppSelector((state) => state.orders.selectedOrder);
@@ -14,7 +13,7 @@ const OrderDataCard: React.FC = () => {
     <>
       {selectedOrder && (
         <Card title="Dados do pedido">
-          <div className={styles.grid}>
+          <div className='dc_grid'>
             <GroupData dataTitle="Id do pedido" data={selectedOrder?._id}></GroupData>
             <GroupData dataTitle="Lojista" data={selectedOrder?.store}></GroupData>
             <GroupData dataTitle="Cliente" data={selectedOrder?.customer.name}></GroupData>

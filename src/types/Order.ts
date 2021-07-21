@@ -1,4 +1,4 @@
-import { Address } from "cluster";
+import { Address } from "./Address";
 import { Customer } from "./Customer";
 import { Item } from "./Item";
 import { Payment } from "./Payment";

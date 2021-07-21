@@ -1,4 +1,4 @@
-export type Addres = {
+export type Address = {
   _id: string;
   number: string;
   neighborhood: string;
