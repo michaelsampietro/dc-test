@@ -2,9 +2,6 @@ import { Card } from "antd";
 import React from "react";
 import { useAppSelector } from "../../../../app/hooks";
 import GroupData from "../../../../components/GroupData";
-import { calculateOrderTotalValue } from "../../../../utils/calculateOrderTotalValue";
-import { calculateOrderPendingValue } from "../../../../utils/calculatePendingValue";
-import { formatPrice } from "../../../../utils/priceFormatter";
 
 const ClientDataCard: React.FC = () => {
   const selectedOrder = useAppSelector((state) => state.orders.selectedOrder);

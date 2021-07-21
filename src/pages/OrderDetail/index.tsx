@@ -1,10 +1,14 @@
+import { Button } from "antd";
 import React, { useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { setSelectedOrder } from "../../app/features/order";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
 import PageTitle from "../../components/PageTitle";
 import ClientDataCard from "./components/ClientDataCard";
 import OrderDataCard from "./components/OrderDataCard";
+import OrderItemsDataCard from "./components/OrderItemsDataCard";
+import OrderPaymentInfoCard from "./components/OrderPaymentInfoCard";
+import styles from './styles.module.css';
 
 const OrderDetail: React.FC = () => {
   const { id } = useParams<any>();
@@ -22,9 +26,20 @@ const OrderDetail: React.FC = () => {
 
   return (
     <>
-      <PageTitle title={`Pedido ${id}`} />
-      <OrderDataCard />
-      <ClientDataCard />
+      <div className={styles.page_header}>
+        <PageTitle title={`Pedido ${id}`} />
+        <Link to='/'>
+          <Button type='link' style={{fontWeight: "bold"}}> {`⤺ Voltar`}</Button>
+        </Link>
+      </div>
+      <div className={styles.order_detail}>
+        <OrderDataCard />
+        <ClientDataCard />
+        <div className={styles.price_cards}>
+          <OrderItemsDataCard />
+          <OrderPaymentInfoCard />
+        </div>
+      </div>
     </>
   );
 };

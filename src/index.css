@@ -24,3 +24,7 @@ code {
     justify-content: space-between;
   }
 }
+
+.ant-card-head-title {
+  font-weight: bold;
+}
