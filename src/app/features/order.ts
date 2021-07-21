@@ -1,18 +1,26 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import type { RootState } from "../store";
 import { Order } from "../../types/Order";
 
-const initialState: any = null;
+type OrdersSliceType = {
+  orders: Order[],
+  selectedOrder?: Order
+}
+
+const initialState: OrdersSliceType = {
+  orders: []
+};
 
 export const ordersSlice = createSlice({
   name: "order",
-  // `createSlice` will infer the state type from the `initialState` argument
   initialState,
   reducers: {
     saveOrders: (state, action: PayloadAction<Order[]>) => {
-      return state = action.payload
+      state.orders = action.payload
+    },
+    setSelectedOrder: (state, action: PayloadAction<Order | undefined>) => {
+      state.selectedOrder = action.payload
     }
   },
 });
 
-export const { saveOrders } = ordersSlice.actions;
+export const { saveOrders, setSelectedOrder } = ordersSlice.actions;

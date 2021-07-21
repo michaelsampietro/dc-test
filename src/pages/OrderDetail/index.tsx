@@ -1,19 +1,28 @@
-import React from 'react';
-import { useParams } from 'react-router-dom';
-import { useAppDispatch, useAppSelector } from '../../app/hooks';
-import PageTitle from '../../components/PageTitle';
+import React, { useEffect } from "react";
+import { useParams } from "react-router-dom";
+import { setSelectedOrder } from "../../app/features/order";
+import { useAppDispatch, useAppSelector } from "../../app/hooks";
+import PageTitle from "../../components/PageTitle";
 
 const OrderDetail: React.FC = () => {
   const { id } = useParams<any>();
+  const orders = useAppSelector((state) => state.orders.orders);
+  const dispatch = useAppDispatch();
 
-  // get order here and put into redux.
-  const state = useAppSelector((state) => state.orders);
+  useEffect(() => {
+    findOrder();
+  }, []);
 
-  console.log(state);
+  const findOrder = () => {
+    const order = orders.find((order) => order._id === id);
+    dispatch(setSelectedOrder(order));
+  };
 
   return (
-    <PageTitle title={`Pedido ${id}`} />
+    <>
+      <PageTitle title={`Pedido ${id}`} />
+    </>
   );
-}
+};
 
 export default OrderDetail;
