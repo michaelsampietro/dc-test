@@ -14,7 +14,7 @@ import OrderDetail from './pages/OrderDetail';
 const App: React.FC = () => (
   <Layout>
     <header>
-      <AppHeader />
+                  <AppHeader />
     </header>
     <section className={styles.content}>
       <ApolloProvider client={client}>
