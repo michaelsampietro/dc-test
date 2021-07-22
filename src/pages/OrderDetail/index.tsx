@@ -26,11 +26,10 @@ const OrderDetail: React.FC = () => {
 
   return (
     <>
-      <div className={styles.page_header}>
+      <div className="page_header">
         <PageTitle title={`Pedido ${id}`} />
         <Link to="/">
           <Button type="link" style={{ fontWeight: 'bold' }}>
-            {' '}
             {`⤺ Voltar`}
           </Button>
         </Link>

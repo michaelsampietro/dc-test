@@ -3,13 +3,16 @@ import React from 'react';
 import OrdersTable from './components/OrdersTable';
 import PageTitle from '../../components/PageTitle';
 import CustomButton from '../../components/CustomButton';
+import { Link } from 'react-router-dom';
 
 const OrdersList: React.FC = () => {
   return (
     <>
       <div className="dc_grid">
         <PageTitle title="Pedidos" />
-        <CustomButton>Novo pedido</CustomButton>
+        <Link to="/pedido">
+          <CustomButton>Novo pedido</CustomButton>
+        </Link>
       </div>
       <Card>
         <OrdersTable />
