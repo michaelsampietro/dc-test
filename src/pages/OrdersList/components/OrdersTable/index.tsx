@@ -3,8 +3,7 @@ import { notification, Table } from 'antd';
 import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { saveOrders } from '../../../../app/features/order';
-import { useAppDispatch, useAppSelector } from '../../../../app/hooks';
-import { store } from '../../../../app/store';
+import { useAppDispatch } from '../../../../app/hooks';
 import { Order } from '../../../../types/Order';
 import { GET_ORDERS } from './query';
 import styles from './styles.module.css';
@@ -33,7 +32,7 @@ const OrdersTable: React.FC = () => {
   useEffect(() => {
     dispatch(saveOrders(data?.orders ?? []));
     setOrders(formatOrdersForTable(data?.orders ?? []));
-  }, [data]);
+  }, [data, dispatch]);
 
   // If useQuery returns an error, display a notification and reset orders
   useEffect(() => {

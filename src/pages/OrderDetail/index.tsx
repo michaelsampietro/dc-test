@@ -1,5 +1,5 @@
 import { Button } from 'antd';
-import React, { useEffect } from 'react';
+import React, { useCallback, useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { setSelectedOrder } from '../../app/features/order';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
@@ -15,14 +15,14 @@ const OrderDetail: React.FC = () => {
   const orders = useAppSelector((state) => state.orders.orders);
   const dispatch = useAppDispatch();
 
-  useEffect(() => {
-    findOrder();
-  }, []);
-
-  const findOrder = () => {
+  const findOrder = useCallback(() => {
     const order = orders.find((order) => order._id === id);
     dispatch(setSelectedOrder(order));
-  };
+  }, [dispatch, id, orders]);
+
+  useEffect(() => {
+    findOrder();
+  }, [findOrder]);
 
   return (
     <>
