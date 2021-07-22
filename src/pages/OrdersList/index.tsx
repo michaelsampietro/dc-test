@@ -7,12 +7,12 @@ import PageTitle from '../../components/PageTitle';
 const OrdersList: React.FC = () => {
   return (
     <>
-      <PageTitle title='Pedidos' />
+      <PageTitle title="Pedidos" />
       <Card>
         <OrdersTable />
       </Card>
     </>
   );
-}
+};
 
 export default OrdersList;

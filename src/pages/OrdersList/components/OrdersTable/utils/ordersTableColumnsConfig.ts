@@ -1,25 +1,25 @@
-import { ColumnsType } from "antd/lib/table";
-import { OrdersTableDataType } from "..";
+import { ColumnsType } from 'antd/lib/table';
+import { OrdersTableDataType } from '..';
 
 export const ordersTableColumns: ColumnsType<OrdersTableDataType> = [
   {
-    title: "Id do pedido",
-    dataIndex: "id",
+    title: 'Id do pedido',
+    dataIndex: 'id',
   },
   {
-    title: "Lojista",
-    dataIndex: "store",
+    title: 'Lojista',
+    dataIndex: 'store',
   },
   {
-    title: "Cliente",
-    dataIndex: "customer",
+    title: 'Cliente',
+    dataIndex: 'customer',
   },
   {
-    title: "Valor",
-    dataIndex: "value",
+    title: 'Valor',
+    dataIndex: 'value',
   },
   {
-    title: "Valor pendente",
-    dataIndex: "pendingValue",
+    title: 'Valor pendente',
+    dataIndex: 'pendingValue',
   },
 ];

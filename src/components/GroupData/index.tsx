@@ -5,13 +5,13 @@ interface GroupDataProps {
   data?: string;
 }
 
-const GroupData: React.FC<GroupDataProps> = ({data, dataTitle}) => {
+const GroupData: React.FC<GroupDataProps> = ({ data, dataTitle }) => {
   return (
     <div>
       <span>{dataTitle}</span>
-      <p style={{fontWeight: 'bold'}}>{data ?? "-"}</p>
+      <p style={{ fontWeight: 'bold' }}>{data ?? '-'}</p>
     </div>
   );
-}
+};
 
 export default GroupData;

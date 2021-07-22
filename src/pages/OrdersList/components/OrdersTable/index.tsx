@@ -1,15 +1,15 @@
-import { useQuery } from "@apollo/client";
-import { notification, Table } from "antd";
-import React, { useEffect, useState } from "react";
-import { useHistory } from "react-router-dom";
-import { saveOrders } from "../../../../app/features/order";
-import { useAppDispatch, useAppSelector } from "../../../../app/hooks";
-import { store } from "../../../../app/store";
-import { Order } from "../../../../types/Order";
-import { GET_ORDERS } from "./query";
-import styles from "./styles.module.css";
-import { formatOrdersForTable } from "./utils/formatOrdersForTable";
-import { ordersTableColumns } from "./utils/ordersTableColumnsConfig";
+import { useQuery } from '@apollo/client';
+import { notification, Table } from 'antd';
+import React, { useEffect, useState } from 'react';
+import { useHistory } from 'react-router-dom';
+import { saveOrders } from '../../../../app/features/order';
+import { useAppDispatch, useAppSelector } from '../../../../app/hooks';
+import { store } from '../../../../app/store';
+import { Order } from '../../../../types/Order';
+import { GET_ORDERS } from './query';
+import styles from './styles.module.css';
+import { formatOrdersForTable } from './utils/formatOrdersForTable';
+import { ordersTableColumns } from './utils/ordersTableColumnsConfig';
 
 type DataType = {
   orders: Order[];
@@ -32,28 +32,28 @@ const OrdersTable: React.FC = () => {
   // Saving all orders in redux and formatting for display.
   useEffect(() => {
     dispatch(saveOrders(data?.orders ?? []));
-    setOrders(formatOrdersForTable(data?.orders ?? []))
+    setOrders(formatOrdersForTable(data?.orders ?? []));
   }, [data]);
 
   // If useQuery returns an error, display a notification and reset orders
   useEffect(() => {
     if (error) {
-      setOrders([])
+      setOrders([]);
       notification.error({
-        message: error.message
+        message: error.message,
       });
     }
-  }, [error])
+  }, [error]);
 
   const viewOrder = (orderId: string) => {
     history.push(`/pedido/${orderId}`);
-  }
+  };
 
   return (
     <>
       <Table
         style={{
-          overflow: "auto",
+          overflow: 'auto',
         }}
         rowKey="id"
         loading={loading}
@@ -66,7 +66,7 @@ const OrdersTable: React.FC = () => {
           };
         }}
         pagination={{
-          showSizeChanger: true
+          showSizeChanger: true,
         }}
       />
     </>

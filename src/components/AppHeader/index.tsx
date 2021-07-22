@@ -10,6 +10,6 @@ const AppHeader: React.FC = () => {
       </div>
     </div>
   );
-}
+};
 
 export default AppHeader;

@@ -1,25 +1,25 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { Order } from "../../types/Order";
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { Order } from '../../types/Order';
 
 type OrdersSliceType = {
-  orders: Order[],
-  selectedOrder?: Order
-}
+  orders: Order[];
+  selectedOrder?: Order;
+};
 
 const initialState: OrdersSliceType = {
-  orders: []
+  orders: [],
 };
 
 export const ordersSlice = createSlice({
-  name: "order",
+  name: 'order',
   initialState,
   reducers: {
     saveOrders: (state, action: PayloadAction<Order[]>) => {
-      state.orders = action.payload
+      state.orders = action.payload;
     },
     setSelectedOrder: (state, action: PayloadAction<Order | undefined>) => {
-      state.selectedOrder = action.payload
-    }
+      state.selectedOrder = action.payload;
+    },
   },
 });
 

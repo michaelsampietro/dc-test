@@ -1,9 +1,9 @@
-import { render, screen } from "@testing-library/react"
-import AppHeader from "."
+import { render, screen } from '@testing-library/react';
+import AppHeader from '.';
 
 describe('AppHeader', () => {
   test('renders correctly', () => {
-    render(<AppHeader />)
+    render(<AppHeader />);
     expect(screen.getByRole('img')).toBeInTheDocument();
-  })
-})
+  });
+});

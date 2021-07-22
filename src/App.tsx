@@ -1,15 +1,15 @@
-import React from "react";
-import { Card, Layout } from "antd";
-import AppHeader from "./components/AppHeader";
-import AppFooter from "./components/AppFooter";
-import OrdersList from "./pages/OrdersList";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import React from 'react';
+import { Layout } from 'antd';
+import AppHeader from './components/AppHeader';
+import AppFooter from './components/AppFooter';
+import OrdersList from './pages/OrdersList';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
-import "antd/dist/antd.css";
-import styles from "./App.module.css";
-import { ApolloProvider } from "@apollo/client";
-import { client } from "./config/apollo";
-import OrderDetail from "./pages/OrderDetail";
+import 'antd/dist/antd.css';
+import styles from './App.module.css';
+import { ApolloProvider } from '@apollo/client';
+import { client } from './config/apollo';
+import OrderDetail from './pages/OrderDetail';
 
 const App: React.FC = () => (
   <Layout>
@@ -19,7 +19,7 @@ const App: React.FC = () => (
     <section className={styles.content}>
       <ApolloProvider client={client}>
         <Router>
-          <Switch >
+          <Switch>
             <Route path="/pedido/:id" component={OrderDetail} />
             <Route path="/" component={OrdersList} />
           </Switch>

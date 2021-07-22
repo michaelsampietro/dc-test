@@ -4,6 +4,6 @@ import React from 'react';
 
 const AppFooter: React.FC = () => {
   return <h3>Footer</h3>;
-}
+};
 
 export default AppFooter;
