@@ -1,8 +1,8 @@
 import { OrdersTableDataType } from "..";
-import { Order } from "../../../types/Order";
-import { calculateOrderTotalValue } from "../../../utils/calculateOrderTotalValue";
-import { calculateOrderPendingValue } from "../../../utils/calculatePendingValue";
-import { formatPrice } from "../../../utils/priceFormatter";
+import { Order } from "../../../../../types/Order";
+import { calculateOrderTotalValue } from "../../../../../utils/calculateOrderTotalValue";
+import { calculateOrderPendingValue } from "../../../../../utils/calculatePendingValue";
+import { formatPrice } from "../../../../../utils/priceFormatter";
 
 /**
  * This method formats the orders that comes from the backend to be used in the table
