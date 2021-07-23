@@ -1,4 +1,4 @@
-import { Button, List, Popover, Table } from 'antd';
+import { Button, Popover, Table } from 'antd';
 import { ColumnsType } from 'antd/lib/table';
 import React from 'react';
 import { formatPrice } from '../../../../utils/priceFormatter';

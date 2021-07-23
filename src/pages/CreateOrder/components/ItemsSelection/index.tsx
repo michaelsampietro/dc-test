@@ -1,11 +1,10 @@
 import { Select, Form, Card } from 'antd';
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { updateItems } from '../../../../app/features/createOrder';
 import { useAppDispatch } from '../../../../app/hooks';
 import { goods } from '../../../../mocks/goods';
 import { stores } from '../../../../mocks/stores';
 import { OrderItem } from '../../../../types/CreateOrderTypes/Item';
-import { formatPrice } from '../../../../utils/priceFormatter';
 import PreviewCurrentItem from '../PreviewCurrentItem/PreviewCurrentItem';
 import PreviewSelectedItems from '../PreviewSelectedItems';
 import styles from './styles.module.css';
@@ -17,7 +16,6 @@ const ItemsSelection: React.FC = () => {
   const [items, setItems] = useState<OrderItem[]>([]);
   const [currentItem, setCurrentItem] = useState<OrderItem>();
   const [selectedItems, setSelectedItems] = useState<SelectedItemType[]>([]);
-  const amountRef = useRef(null);
   const dispatch = useAppDispatch();
 
   const [store, setStore] = useState('');

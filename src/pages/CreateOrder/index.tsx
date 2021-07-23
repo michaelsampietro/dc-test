@@ -11,12 +11,7 @@ import PaymentForm from './components/PaymentForm';
 import { CREATE_ORDER } from './query';
 import { parseAddress, parsePayments } from './utils';
 import styles from './styles.module.css';
-import {
-  ArrowLeftOutlined,
-  CaretLeftFilled,
-  CheckCircleFilled,
-  SaveFilled,
-} from '@ant-design/icons';
+import { ArrowLeftOutlined, CheckCircleFilled } from '@ant-design/icons';
 
 const CreateOrder: React.FC = () => {
   const [disableSubmit, setDisableSubmit] = useState(false);

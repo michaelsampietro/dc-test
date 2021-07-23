@@ -1,4 +1,4 @@
-import { PlusCircleFilled, PlusCircleOutlined } from '@ant-design/icons';
+import { PlusCircleFilled } from '@ant-design/icons';
 import { Input, Button, message } from 'antd';
 import React, { useRef } from 'react';
 import GroupData from '../../../../components/GroupData';
