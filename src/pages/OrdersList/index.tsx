@@ -8,11 +8,13 @@ import { Link } from 'react-router-dom';
 const OrdersList: React.FC = () => {
   return (
     <>
-      <div className="dc_grid">
+      <div className="page_header">
         <PageTitle title="Pedidos" />
-        <Link to="/pedido">
-          <CustomButton>Novo pedido</CustomButton>
-        </Link>
+        <div style={{ textAlign: 'right' }}>
+          <Link to="/pedido">
+            <CustomButton>Novo pedido</CustomButton>
+          </Link>
+        </div>
       </div>
       <Card>
         <OrdersTable />

@@ -33,5 +33,5 @@ code {
   flex-direction: row;
   justify-content: space-between;
   flex-wrap: wrap-reverse;
-  align-items: center;
+  align-items: flex-end;
 }
