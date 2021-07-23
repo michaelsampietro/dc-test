@@ -1,30 +1,17 @@
-import { Button, Form, Select } from 'antd';
+import { Button, Card, Form, Select } from 'antd';
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import PageTitle from '../../components/PageTitle';
 import { stores } from '../../mocks/stores';
 import CustomerForm from './components/CustomerForm';
 import ItemsSelection from './components/ItemsSelection';
+import PaymentForm from './components/PaymentForm';
 
 const { Option } = Select;
 
 const defaultMessage = 'Campo obrigatório!';
 
 const CreateOrder: React.FC = () => {
-  const [store, setStore] = useState('');
-
-  const selectStore = (value: string) => {
-    if (store === '') {
-      setStore(value);
-    } else if (
-      window.confirm(
-        'Tem certeza? Trocar de loja apagará todos os itens já adicionados ao pedido.',
-      )
-    ) {
-      setStore(value);
-    }
-  };
-
   return (
     <>
       <div className="page_header">
@@ -37,21 +24,11 @@ const CreateOrder: React.FC = () => {
       </div>
 
       <Form onFinish={console.log} layout="vertical">
-        <Form.Item
-          name="store"
-          label="Loja"
-          rules={[{ required: true, message: defaultMessage }]}
-        >
-          <Select placeholder="Selecione a loja" onChange={selectStore}>
-            {stores.map((store) => (
-              <Option value={store}>{store}</Option>
-            ))}
-          </Select>
-        </Form.Item>
-
-        <ItemsSelection store={store} />
+        <ItemsSelection />
 
         <CustomerForm />
+
+        <PaymentForm />
 
         <Button htmlType="submit">Criar pedido</Button>
       </Form>

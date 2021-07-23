@@ -1,22 +1,33 @@
-import { Select, Form, List, Input, Button, Card } from 'antd';
+import { Select, Form, List, Input, Button, Card, Row } from 'antd';
 import React, { useEffect, useRef, useState } from 'react';
 import GroupData from '../../../../components/GroupData';
 import { goods } from '../../../../mocks/goods';
+import { stores } from '../../../../mocks/stores';
 import { Item } from '../../../../types/CreateOrderTypes/Item';
 import { formatPrice } from '../../../../utils/priceFormatter';
 const { Option } = Select;
 
-interface ItemsSelectionProps {
-  store: string;
-}
-
 type SelectedItemType = Item & { quantity: number };
 
-const ItemsSelection: React.FC<ItemsSelectionProps> = ({ store }) => {
+const ItemsSelection: React.FC = () => {
   const [items, setItems] = useState<Item[]>([]);
   const [currentItem, setCurrentItem] = useState<Item>();
   const [selectedItems, setSelectedItems] = useState<SelectedItemType[]>([]);
   const amountRef = useRef(null);
+
+  const [store, setStore] = useState('');
+
+  const selectStore = (value: string) => {
+    if (store === '') {
+      setStore(value);
+    } else if (
+      window.confirm(
+        'Tem certeza? Trocar de loja apagará todos os itens já adicionados ao pedido.',
+      )
+    ) {
+      setStore(value);
+    }
+  };
 
   useEffect(() => {
     if (store && store === '') {
@@ -54,6 +65,13 @@ const ItemsSelection: React.FC<ItemsSelectionProps> = ({ store }) => {
   return (
     <>
       <Card title="Itens do pedido">
+        <Form.Item name="store" label="Loja">
+          <Select placeholder="Selecione a loja" onChange={selectStore}>
+            {stores.map((store) => (
+              <Option value={store}>{store}</Option>
+            ))}
+          </Select>
+        </Form.Item>
         <Form.Item label="Selecione os itens">
           <Select
             placeholder="Selecione os itens"
