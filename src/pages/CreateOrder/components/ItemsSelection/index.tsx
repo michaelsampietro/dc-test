@@ -1,19 +1,22 @@
 import { Select, Form, List, Input, Button, Card } from 'antd';
 import React, { useEffect, useRef, useState } from 'react';
+import { updateItems } from '../../../../app/features/createOrder';
+import { useAppDispatch } from '../../../../app/hooks';
 import GroupData from '../../../../components/GroupData';
 import { goods } from '../../../../mocks/goods';
 import { stores } from '../../../../mocks/stores';
-import { Item } from '../../../../types/CreateOrderTypes/Item';
+import { OrderItem } from '../../../../types/CreateOrderTypes/Item';
 import { formatPrice } from '../../../../utils/priceFormatter';
 const { Option } = Select;
 
-type SelectedItemType = Item & { quantity: number };
+export type SelectedItemType = OrderItem & { quantity: number };
 
 const ItemsSelection: React.FC = () => {
-  const [items, setItems] = useState<Item[]>([]);
-  const [currentItem, setCurrentItem] = useState<Item>();
+  const [items, setItems] = useState<OrderItem[]>([]);
+  const [currentItem, setCurrentItem] = useState<OrderItem>();
   const [selectedItems, setSelectedItems] = useState<SelectedItemType[]>([]);
   const amountRef = useRef(null);
+  const dispatch = useAppDispatch();
 
   const [store, setStore] = useState('');
 
@@ -36,6 +39,12 @@ const ItemsSelection: React.FC = () => {
     }
   };
 
+  // Update store every time selected items change.
+  // This will be used later when the user submits the create order form.
+  useEffect(() => {
+    dispatch(updateItems(selectedItems));
+  }, [selectedItems, dispatch]);
+
   useEffect(() => {
     if (store && store === '') {
       setItems([]);
@@ -48,7 +57,7 @@ const ItemsSelection: React.FC = () => {
 
   const selectItem = (value: string) => {
     if (value) {
-      const item = JSON.parse(value) as Item;
+      const item = JSON.parse(value) as OrderItem;
       setCurrentItem(item);
     } else {
       setCurrentItem(undefined);
@@ -61,7 +70,7 @@ const ItemsSelection: React.FC = () => {
       {
         amount: currentItem!.amount,
         name: currentItem!.name,
-        quantity: (amountRef.current as any).state.value,
+        quantity: Number.parseInt((amountRef.current as any).state.value),
       },
     ]);
   };
@@ -108,7 +117,7 @@ const ItemsSelection: React.FC = () => {
                 />
                 <GroupData
                   dataTitle="Valor"
-                  data={currentItem.amount.toString()}
+                  data={formatPrice(currentItem.amount)}
                 />
                 <span>Quantidade</span>
                 <Input ref={amountRef} type="number" />

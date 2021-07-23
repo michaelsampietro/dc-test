@@ -4,7 +4,7 @@ export const payments = [
     label: 'Crédito',
   },
   {
-    value: 'DEDBIT',
+    value: 'DEBIT',
     label: 'Débito',
   },
   {

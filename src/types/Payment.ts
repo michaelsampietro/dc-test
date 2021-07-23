@@ -1,5 +1,5 @@
 export type Payment = {
-  _id: string;
+  _id?: string;
   method: string;
   amount: number;
 };
