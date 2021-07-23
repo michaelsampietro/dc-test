@@ -1,3 +1,4 @@
+import { ArrowLeftOutlined } from '@ant-design/icons';
 import { Button } from 'antd';
 import React, { useCallback, useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
@@ -30,7 +31,7 @@ const OrderDetail: React.FC = () => {
         <PageTitle title={`Pedido ${id}`} />
         <Link to="/">
           <Button type="link" style={{ fontWeight: 'bold' }}>
-            {`⤺ Voltar`}
+            <ArrowLeftOutlined /> Voltar
           </Button>
         </Link>
       </div>

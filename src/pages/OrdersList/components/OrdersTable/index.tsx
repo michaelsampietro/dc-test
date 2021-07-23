@@ -56,7 +56,7 @@ const OrdersTable: React.FC = () => {
         }}
         rowKey="id"
         loading={loading}
-        dataSource={orders}
+        dataSource={orders.reverse()}
         columns={ordersTableColumns}
         rowClassName={styles.row}
         onRow={(record) => {

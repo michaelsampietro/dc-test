@@ -5,6 +5,8 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  min-height: 100vh !important;
+  background-color: #f0f2f5 !important;
 }
 
 code {
@@ -34,4 +36,16 @@ code {
   justify-content: space-between;
   flex-wrap: wrap-reverse;
   align-items: flex-end;
+}
+
+h2.ant-typography {
+  word-wrap: anywhere;
+}
+
+.ant-btn {
+  background-color: rgba(254, 82, 0, 1) !important;
+  color: #fff !important;
+  font-weight: bold !important;
+  border-radius: 5px !important;
+  border: none !important;
 }

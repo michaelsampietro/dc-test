@@ -1,12 +1,14 @@
-import { Select, Form, List, Input, Button, Card } from 'antd';
+import { Select, Form, Card } from 'antd';
 import React, { useEffect, useRef, useState } from 'react';
 import { updateItems } from '../../../../app/features/createOrder';
 import { useAppDispatch } from '../../../../app/hooks';
-import GroupData from '../../../../components/GroupData';
 import { goods } from '../../../../mocks/goods';
 import { stores } from '../../../../mocks/stores';
 import { OrderItem } from '../../../../types/CreateOrderTypes/Item';
 import { formatPrice } from '../../../../utils/priceFormatter';
+import PreviewCurrentItem from '../PreviewCurrentItem/PreviewCurrentItem';
+import PreviewSelectedItems from '../PreviewSelectedItems';
+import styles from './styles.module.css';
 const { Option } = Select;
 
 export type SelectedItemType = OrderItem & { quantity: number };
@@ -64,13 +66,13 @@ const ItemsSelection: React.FC = () => {
     }
   };
 
-  const addToOrder = () => {
+  const addToOrder = (quantity: number) => {
     setSelectedItems((v) => [
       ...v,
       {
         amount: currentItem!.amount,
         name: currentItem!.name,
-        quantity: Number.parseInt((amountRef.current as any).state.value),
+        quantity,
       },
     ]);
   };
@@ -107,50 +109,19 @@ const ItemsSelection: React.FC = () => {
           </Select>
         </Form.Item>
 
-        <div className="dc_grid">
+        <div className={styles.preview_items}>
           <div>
-            {currentItem && (
-              <div>
-                <GroupData
-                  dataTitle="Item selecionado"
-                  data={currentItem.name}
-                />
-                <GroupData
-                  dataTitle="Valor"
-                  data={formatPrice(currentItem.amount)}
-                />
-                <span>Quantidade</span>
-                <Input ref={amountRef} type="number" />
-                <Button htmlType="button" onClick={addToOrder}>
-                  Adicionar ao pedido
-                </Button>
-              </div>
-            )}
+            <PreviewCurrentItem
+              addToOrder={addToOrder}
+              currentItem={currentItem}
+            />
           </div>
 
           <div>
-            {selectedItems && (
-              <>
-                <List
-                  dataSource={selectedItems}
-                  renderItem={(item) => (
-                    <>
-                      <List.Item key={JSON.stringify(item)}>
-                        <span>{item.name}</span>
-                        <span>{formatPrice(item.amount)}</span>
-                        <span>{item.quantity}</span>
-                        <span>{formatPrice(item.amount * item.quantity)}</span>
-                        <span>
-                          <Button type="link" onClick={() => removeItem(item)}>
-                            deletar
-                          </Button>
-                        </span>
-                      </List.Item>
-                    </>
-                  )}
-                />
-              </>
-            )}
+            <PreviewSelectedItems
+              removeItem={removeItem}
+              selectedItems={selectedItems}
+            />
           </div>
         </div>
       </Card>

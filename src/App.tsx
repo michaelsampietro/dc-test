@@ -1,7 +1,6 @@
 import React from 'react';
 import { Layout } from 'antd';
 import AppHeader from './components/AppHeader';
-import AppFooter from './components/AppFooter';
 import OrdersList from './pages/OrdersList';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
@@ -28,9 +27,6 @@ const App: React.FC = () => (
         </Router>
       </ApolloProvider>
     </section>
-    <footer>
-      <AppFooter />
-    </footer>
   </Layout>
 );
 

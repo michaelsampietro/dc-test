@@ -1,0 +1,23 @@
+.preview_items {
+  display: flex;
+  flex-direction: column;
+}
+
+.preview_items > * {
+  flex: 1;
+}
+
+.preview_items > *:nth-child(2) {
+  margin-top: 20px;
+}
+
+@media screen and (min-width: 768px) {
+  .preview_items {
+    flex-direction: row;
+  }
+
+  .preview_items > *:nth-child(2) {
+    margin-top: 0;
+    margin-left: 15px;
+  }
+}
