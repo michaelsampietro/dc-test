@@ -1,15 +1,10 @@
-import { Button, Card, Form, Select } from 'antd';
-import React, { useState } from 'react';
+import { Button, Form } from 'antd';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import PageTitle from '../../components/PageTitle';
-import { stores } from '../../mocks/stores';
 import CustomerForm from './components/CustomerForm';
 import ItemsSelection from './components/ItemsSelection';
 import PaymentForm from './components/PaymentForm';
-
-const { Option } = Select;
-
-const defaultMessage = 'Campo obrigatório!';
 
 const CreateOrder: React.FC = () => {
   return (
@@ -25,9 +20,7 @@ const CreateOrder: React.FC = () => {
 
       <Form onFinish={console.log} layout="vertical">
         <ItemsSelection />
-
         <CustomerForm />
-
         <PaymentForm />
 
         <Button htmlType="submit">Criar pedido</Button>

@@ -1,5 +1,4 @@
 import { Form, Input } from 'antd';
-import { Rule } from 'antd/lib/form';
 import React from 'react';
 
 interface CustomInputProps {

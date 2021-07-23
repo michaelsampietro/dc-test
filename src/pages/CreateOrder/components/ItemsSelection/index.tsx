@@ -1,4 +1,4 @@
-import { Select, Form, List, Input, Button, Card, Row } from 'antd';
+import { Select, Form, List, Input, Button, Card } from 'antd';
 import React, { useEffect, useRef, useState } from 'react';
 import GroupData from '../../../../components/GroupData';
 import { goods } from '../../../../mocks/goods';
@@ -20,11 +20,18 @@ const ItemsSelection: React.FC = () => {
   const selectStore = (value: string) => {
     if (store === '') {
       setStore(value);
-    } else if (
-      window.confirm(
-        'Tem certeza? Trocar de loja apagará todos os itens já adicionados ao pedido.',
-      )
-    ) {
+      return;
+    }
+
+    if (selectedItems.length > 0) {
+      if (
+        window.confirm(
+          'Tem certeza? Trocar de loja apagará todos os itens já adicionados ao pedido.',
+        )
+      ) {
+        setStore(value);
+      }
+    } else {
       setStore(value);
     }
   };
@@ -40,8 +47,12 @@ const ItemsSelection: React.FC = () => {
   }, [store]);
 
   const selectItem = (value: string) => {
-    const item = JSON.parse(value) as Item;
-    setCurrentItem(item);
+    if (value) {
+      const item = JSON.parse(value) as Item;
+      setCurrentItem(item);
+    } else {
+      setCurrentItem(undefined);
+    }
   };
 
   const addToOrder = () => {
