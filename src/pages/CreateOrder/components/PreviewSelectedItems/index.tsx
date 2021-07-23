@@ -58,6 +58,7 @@ const PreviewSelectedItems: React.FC<PreviewSelectedItemsProps> = ({
             columns={columns}
             pagination={false}
             size="small"
+            rowKey="name"
           ></Table>
         </>
       )}

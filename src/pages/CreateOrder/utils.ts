@@ -1,5 +1,6 @@
 import { Address } from '../../types/Address';
 import { Payment } from '../../types/Payment';
+import { reaisToCents } from '../../utils/reaisToCents';
 
 type Form = {
   address_city: string;
@@ -26,7 +27,7 @@ export const parseAddress = (values: Form): Address => {
 export const parsePayments = (values: Form): Payment[] => {
   return [
     {
-      amount: Number.parseInt(values.payment_amount),
+      amount: reaisToCents(Number.parseInt(values.payment_amount)),
       method: values.payment_method,
     },
   ];

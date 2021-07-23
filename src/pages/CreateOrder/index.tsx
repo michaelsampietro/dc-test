@@ -12,10 +12,18 @@ import { CREATE_ORDER } from './query';
 import { parseAddress, parsePayments } from './utils';
 import styles from './styles.module.css';
 import { ArrowLeftOutlined, CheckCircleFilled } from '@ant-design/icons';
+import { reaisToCents } from '../../utils/reaisToCents';
+import { GET_ORDERS } from '../OrdersList/components/OrdersTable/query';
 
 const CreateOrder: React.FC = () => {
   const [disableSubmit, setDisableSubmit] = useState(false);
-  const [createOrder] = useMutation(CREATE_ORDER);
+  const [createOrder] = useMutation(CREATE_ORDER, {
+    refetchQueries: [
+      {
+        query: GET_ORDERS,
+      },
+    ],
+  });
   const orderItems = useAppSelector((state) => state.createOrder.items);
   const history = useHistory();
 
@@ -31,7 +39,7 @@ const CreateOrder: React.FC = () => {
     const parsedForm = {
       store: values.store,
       customer: { name: values.customer_name },
-      deliveryFee: Number.parseInt(values.deliveryFee),
+      deliveryFee: reaisToCents(Number.parseInt(values.deliveryFee)),
       items: orderItems,
       amount,
       payments,

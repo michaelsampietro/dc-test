@@ -88,7 +88,9 @@ const ItemsSelection: React.FC = () => {
         <Form.Item name="store" label="Loja">
           <Select placeholder="Selecione a loja" onChange={selectStore}>
             {stores.map((store) => (
-              <Option value={store}>{store}</Option>
+              <Option key={store} value={store}>
+                {store}
+              </Option>
             ))}
           </Select>
         </Form.Item>

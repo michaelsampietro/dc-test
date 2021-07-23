@@ -17,16 +17,18 @@ const PaymentForm: React.FC = () => {
           >
             <Select placeholder="Selecione a loja">
               {payments.map((payment) => (
-                <Option value={payment.value}>{payment.label}</Option>
+                <Option key={payment.value} value={payment.value}>
+                  {payment.label}
+                </Option>
               ))}
             </Select>
           </Form.Item>
         </Col>
         <Col xs={24} md={8}>
-          <CustomInput label="Valor pago" name="payment_amount" />
+          <CustomInput label="Valor pago" name="payment_amount" prefix="R$" />
         </Col>
         <Col xs={24} md={8}>
-          <CustomInput label="Valor do frete" name="deliveryFee" />
+          <CustomInput label="Valor do frete" name="deliveryFee" prefix="R$" />
         </Col>
       </Row>
     </Card>
