@@ -1,10 +1,9 @@
-import { useMutation } from '@apollo/client';
-import { Button, Input, Form, Select } from 'antd';
+import { Button, Form, Select } from 'antd';
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import PageTitle from '../../components/PageTitle';
-import { goods } from '../../mocks/goods';
 import { stores } from '../../mocks/stores';
+import CustomerForm from './components/CustomerForm';
 import ItemsSelection from './components/ItemsSelection';
 
 const { Option } = Select;
@@ -51,6 +50,10 @@ const CreateOrder: React.FC = () => {
         </Form.Item>
 
         <ItemsSelection store={store} />
+
+        <CustomerForm />
+
+        <Button htmlType="submit">Criar pedido</Button>
       </Form>
     </>
   );
