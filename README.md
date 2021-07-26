@@ -1,4 +1,4 @@
-### Rodando o projeto
+# Rodando o projeto
 Antes de rodar o projeto pela primeira vez, instale todas as dependencias com o comando `yarn start`.
 
 Após isso, execute o projeto com `yarn start`.
