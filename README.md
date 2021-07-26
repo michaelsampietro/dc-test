@@ -1,46 +1,24 @@
-# Getting Started with Create React App
+### Rodando o projeto
+Antes de rodar o projeto pela primeira vez, instale todas as dependencias com o comando `yarn start`.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Após isso, execute o projeto com `yarn start`.
 
-## Available Scripts
+### Testes
 
-In the project directory, you can run:
+Para rodar os testes, execute `yarn test`.
 
-### `yarn start`
+# Sobre o projeto
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+O projeto foi criado com o create-react-app, com typescript e utilizando hooks. Para controlar alguns estados da aplicação, estou utilizando Redux e o Apollo para fazer as requisições, conforme foi estipulado no desafio. A parte visual foi desenvolvida em cima do Ant Design, em sua versão estável mais recente.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+Além disso, utilizei um hook de pre-commit com o husky para fazer a formatação/identação dos arquivos com o Prettier.
 
-### `yarn test`
+## Estrutura
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Tentei utilizar uma estrutura bastante padrão, seguindo as documentações de todas as bibliotecas que utilizei. Falando apenas da estrutura de componentes, separei a estrutura de pastas em `pages` e `components` (além das pastas de utilitários e configurações).
 
-### `yarn build`
+A pasta `components` contém os componentes "universais" da aplicação, que são utilizadas por mais de um componente.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Dentro de pages, encontra-se os componentes referentes às páginas da aplicação. Nos casos que se fez necessário, ainda criei uma pasta de `components` para armazenar os componentes específicos de alguma página, para não causar confusão com os componentes universais.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+O projeto todo está todo com tipagens e criei alguns mocks que funcionaram como uma base de dados na hora de gerar novos pedidos.
