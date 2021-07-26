@@ -1,0 +1,39 @@
+/* .page_header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-wrap: wrap-reverse;
+  align-items: center;
+} */
+
+.order_detail > * {
+  margin-top: 20px;
+}
+
+.price_cards {
+  display: flex;
+  flex-direction: column;
+}
+
+.price_cards > *:nth-child(2) {
+  margin-top: 20px;
+}
+
+@media screen and (min-width: 768px) {
+  .price_cards {
+    flex-direction: row;
+    justify-content: baseline;
+  }
+
+  .price_cards > *:nth-child(2) {
+    margin-top: 0;
+  }
+
+  .price_cards > * {
+    flex: 1;
+  }
+
+  .price_cards > *:nth-child(1) {
+    margin: 0 15px 0 0;
+  }
+}

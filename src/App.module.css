@@ -1,0 +1,9 @@
+.content {
+  padding: 10px;
+}
+
+@media screen and (min-width: 1920px) {
+  .content {
+    padding: 10px 5vw;
+  }
+}

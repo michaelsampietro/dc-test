@@ -1,0 +1,12 @@
+.header {
+  width: 100%;
+  background-color: rgba(254,82,0,1.0);
+  height: 3.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.header .logo img{
+  max-height: 2.5rem;
+}
